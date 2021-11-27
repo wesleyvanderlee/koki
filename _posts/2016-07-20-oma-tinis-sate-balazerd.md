@@ -6,7 +6,7 @@ users: 4
 duration: 40 minuten
 ---
 
-![My helpful screenshot](/assets/images/sate.jpg)
+![My helpful screenshot](/images/sate.jpg)
 
 
 
