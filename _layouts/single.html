@@ -32,16 +32,21 @@ layout: default
           {% include page__meta.html %}
         </header>
       {% endunless %}
-
+      
+      
       <section class="page__content e-content" itemprop="text">
         {% if page.toc %}
-          <aside class="sidebar__right {% if page.toc_sticky %}sticky{% endif %}">
-            <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-{{ page.toc_icon | default: 'file-alt' }}"></i> {{ page.toc_label | default: site.data.ui-text[site.locale].toc_label | default: "On this page" }}</h4></header>
-              {% include toc.html sanitize=true html=content h_min=1 h_max=6 class="toc__menu" skip_no_ids=true %}
-            </nav>
-          </aside>
+        <aside class="sidebar__right {% if page.toc_sticky %}sticky{% endif %}">
+          <nav class="toc">
+            <header><h4 class="nav__title"><i class="fas fa-{{ page.toc_icon | default: 'file-alt' }}"></i> {{ page.toc_label | default: site.data.ui-text[site.locale].toc_label | default: "On this page" }}</h4></header>
+            {% include toc.html sanitize=true html=content h_min=1 h_max=6 class="toc__menu" skip_no_ids=true %}
+          </nav>
+        </aside>
         {% endif %}
+        <div style="font-size: 16px; margin-bottom: 16px;">
+          <i class='fa fa-users' aria-hidden="true"></i> {{ page.users }} personen <i class="fa fa-clock-o" aria-hidden="true"></i> {{ page.duration }}
+        </div>
+        
         {{ content }}
         {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
@@ -74,6 +79,7 @@ layout: default
         {% endfor %}
       </div>
     </div>
+  
   {% comment %}<!-- otherwise show recent posts if no related when `related: true` -->{% endcomment %}
   {% elsif page.id and page.related %}
     <div class="page__related">
